@@ -1,0 +1,464 @@
+<style type="text/css">
+<!--
+/* Grids */
+.group,.last-item{overflow:hidden; *overflow:visible;*zoom:1;}
+.item{float:left; text-align:left;}
+.size1of1{float:none;}
+.size1of2{width:50%;}
+.size1of3{width:33.33333%;}
+.size2of3{width:66.66666%;}
+.size1of4{width:25%;}
+.size3of4{width:75%;}
+.size1of5{width:20%;}
+.size2of5{width:40%;}
+.size3of5{width:60%;}
+.size4of5{width:80%;}
+.last-item{float:none;width:auto;_position:relative;_left:-3px;_margin-right:-3px;}
+
+.branding-container {
+                margin: 0 auto;
+                width:800px;
+                text-align:center;
+z-index: 999;
+}
+
+
+/* Linklist container */
+.branding.linklist .header {
+  margin-top: 30px;
+	margin-bottom: 12px;
+	border-bottom: 3px solid #ededed;
+}
+.branding.linklist .header .title
+{
+	display:block;
+	font-size:1.75em;
+	font-weight:500;
+	color: #150d66;
+	float:left;
+	text-align:left;
+	height:36px;
+	margin:0 5px 0 4px;
+	padding:5px 0 0 0;
+	border:none;
+}
+
+
+
+.linklist
+{
+	position:relative;
+	display:block;
+	text-align:left;
+	margin:0;
+}
+/* Horizontal Linklist default style */
+.branding.linklist
+{
+	border-bottom:0px solid #ededed;
+	margin:0 0 10px;
+}
+.branding.linklist .group
+{
+	text-align:left;
+	margin:0 0 .5em;
+}
+.branding.linklist .group .title
+{
+	font-size: 1.50em;
+	font-weight:500;
+	color: #333;
+	margin: 0 20px 10px 0;
+	padding:12px 0 3px;
+	border-bottom: none;
+}
+.branding.linklist .group .menu
+{
+	height: auto;
+}
+.branding.linklist .group .list-link
+{
+	float: none;
+	background: url(http://imageserver.ebscohost.com/branding/s8978330/images/bullet.gif) left center no-repeat;
+	margin: 0 0 10px;
+	line-height:1em;
+	list-style:none;
+	padding: 0 12px;
+}
+/*Link anchor styles*/
+.branding.linklist .group .list-link a:link, .branding.linklist .group .list-link a:visited, .branding.linklist .group .list-link a:active
+{
+	color:#b55300;
+}
+.branding.linklist .group .list-link a:hover
+{
+	color:#dd300d;
+	text-decoration:underline;
+}
+/* Vertical Linklist default style */
+
+.branding.linklist.vertical
+{
+	border-bottom:none;
+}
+.branding.linklist.vertical .item
+{
+	float:none;
+}
+.branding.linklist.vertical .group
+{
+	text-align:left;
+	margin:auto;
+}
+.branding.linklist.vertical .group .title
+{
+	font-size: 1.50em;
+	font-weight:500;
+	color: #333;
+	margin: 0 20px 10px 0;
+	padding:0 0 3px;
+	border-bottom: none;
+}
+.branding.linklist.vertical .group .menu
+{
+	height: auto;
+}
+.branding.linklist.vertical .group .list-link
+{
+	float: none;
+	background: url(http://imageserver.ebscohost.com/branding/s8978330/images/bullet.gif) left center no-repeat;
+	margin: 0 0 10px;
+	line-height:2em;
+	list-style:none;
+	padding: 0 0 0 12px;
+}
+/* Beta banner styles */
+body {
+padding-top: 36px;
+}
+#beta-banner {
+top: 0px; 
+font-size: 1.5em; 
+display: block; 
+position: fixed; 
+background: none repeat scroll 0px 0px rgb(192, 80, 77); 
+color: white;  
+left: 0px; 
+border-bottom: 2px solid rgb(236, 135, 164); 
+height: 34px; 
+width: 100%;
+}
+#beta-banner a {
+color: white !important;
+text-decoration: underline;
+}
+//-->
+</style>
+
+<div class="branding linklist">
+	<div class="container header">
+		<h2 class="title icon">MIT Libraries Services & Information</h2>
+	</div>	
+
+	<div class="group">
+		<div class="item size1of3 custombg">
+        <h2 class="title">Other search tools</h2><!-- Change this Heading Title to your custom title text -->
+			<ul class="menu">
+				<li class="list-link prof1"><a href="http://mit.worldcat.org/">MIT’s WorldCat</a></li>
+				<li class="list-link prof2"><a href="http://libraries.mit.edu/vera">Vera: Databases & e-journals</a></li>
+				<li class="list-link prof3"><a href="http://libraries.mit.edu/barton-reserves">MIT course reserves</a></li>
+                <li class="list-link prof4"><a href="http://www.hathitrust.org/">HathiTrust Digital Library</a></li>
+				<li class="list-link prof5"><a href="http://libraries.mit.edu/fulltext">Full-text finder</a></li>
+				
+			</ul>
+		</div>
+		<div class="item size1of3 custombg">
+        <h2 class="title">Help</h2><!-- Change this Heading Title to your custom title text -->
+			<ul class="menu">
+				<li class="list-link"><a href="http://libraries.mit.edu/research-guides">Research Guides</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/ask-us/index.html" target="_blank">Ask Us!</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/consultations" target="_blank">Research consultations: meet with a librarian</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/calendar" target="_blank">Library classes & workshops</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/help/" target="_blank">More help</a></li>
+			</ul>
+		</div>
+		<div class="item size1of3 last-item custombg">
+        <h2 class="title">Visit the library</h2><!-- Change this Heading Title to your custom title text -->
+			<ul class="menu">
+				<li class="list-link"><a href="http://libraries.mit.edu/hours" target="_blank">Hours</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/about/" target="_blank">List of libraries</a> | 
+				<a href="http://libraries.mit.edu/about/map.html" target="_blank">Map</a></li>
+                <li class="list-link"><a href="http://libraries.mit.edu/about/studyspaces/index.html" target="_blank">Individual study spaces</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/about/studyspaces/groupstudy.html" target="_blank">Group study spaces</a></li>
+                <li class="list-link"><a href="http://libraries.mit.edu/sites/exhibits/" target="_blank">Exhibits/galleries</a></li>
+				<li class="list-link"><a href="http://libguides.mit.edu/directory" target="_blank">Staff directory</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="beta-banner">
+Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://libraries.mit.edu/forms-mit/tell-us.html">Let us know what you think!</a>
+</div>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1760176-20']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+	// This comes from the EBSCO Administration wiki
+	var trackCall = setInterval(function () {
+	    try {
+	        InitAnalytics();
+	        clearInterval(trackCall);
+	        //insert remaining jQuery line here.
+	    } catch (err) {
+
+	    }
+	}, 500);
+	// end EBSCO Admin code
+
+	function InitAnalytics(){
+
+// This is the second iteration of tracking code for EDS.
+// Changelog:
+// v1 Left and right sidebar of results list
+// v2 Options toolbar of results list
+//    Additional tracking of left sidebar filters
+//    Branding footer links
+//    Links within a result in the list
+//    Custom widgets on the record page
+// v2.1 Added WorldCat widget on record page
+//    Added 'Action' value to "Unknown" case statement to identify what forms we are missing.
+// v2.2 Added pagination links
+// v2.3 Added search result scanning
+// v2.4 Improved search result scanning to parse JSON identifier
+//      Add scan for dead end result
+//      Recording error messages (no results warnings)
+// v2.5 Added plain text source and type strings to result scanning
+//      Clicking in result list now identifies titles distinct from fulfillment links
+//      Click tracking also stores item type in 'click type' action
+
+		var strFormAction;
+
+		// Search forms
+		// TODO - capture advanced search, visual search, etc
+		jQuery("input#SearchButton").click(function() { // Basic search button, at the top of the form
+			strFormAction = jQuery("form#aspnetForm").attr("action");
+			strFormAction = strFormAction.substr(0,5);
+			GetSearchString("Short",strFormAction);;
+		});
+		jQuery("input#ctl00_ctl00_FindField_FindField_ctl00_SearchButton").click(function() {
+			strFormAction = jQuery("form#aspnetForm").attr("action");
+			strFormAction = strFormAction.substr(0,5);
+			GetSearchString("Visual",strFormAction);;
+		});
+		jQuery("input#ctl00_ctl00_MainContentArea_MainContentArea_ctrlLimiters_btnSearch").click(function() {
+			strFormAction = jQuery("form#aspnetForm").attr("action");
+			strFormAction = strFormAction.substr(0,5);
+			GetSearchString("Long",strFormAction);;
+		});
+
+		// ##################### Result Page
+		// Options toolbar
+		jQuery("div#optionsControls h3.collapse-toggle").click(function() {
+			var strTarget = jQuery(this).text().trim();
+			TrackEvent('Options Toolbar','Toggle',strTarget,1);
+		});
+		jQuery("div#optionsControls div.collapse-content a").click(function() {
+			var strTarget = jQuery(this).text().trim();
+			TrackEvent('Options Toolbar','Action',strTarget,1);
+		});
+
+		// Left sidebar
+		jQuery("div#column1 a.collapsible-toggle").click(function() {
+			// Show/hide the sidebar itself
+			var strLabel = jQuery(this).attr('title');
+			TrackEvent('Left Sidebar','Sidebar',strLabel,1);
+		});
+		jQuery("div#column1 h3.collapse-toggle").click(function() {
+			var strTarget = jQuery(this).text().trim();
+			var strLabel = jQuery(this).attr('title');
+			TrackEvent('Left Sidebar',strTarget,strLabel,1);
+		});
+		jQuery("div#column1 ul.rl-limiters a").click(function() {
+			var strLimiterText = jQuery(this).text();
+			var strCategory = 'Limiter '+jQuery(this).closest("div").attr('id');
+			TrackEvent('Left Sidebar',strCategory,strLimiterText,1);
+		});
+
+		// Right sidebar
+		jQuery("div#column2 a.collapsible-toggle").click(function() {
+			// Show/hide the sidebar itself
+			var strLabel = jQuery(this).attr('title');
+			TrackEvent('Right Sidebar','Sidebar',strLabel,1);
+		});
+		jQuery("div#column2 h3.collapse-toggle").click(function() {
+			var strTarget = jQuery(this).text();
+			var strLabel = jQuery(this).attr('title');
+			TrackEvent('Right Sidebar',strTarget.trim(),strLabel,1);
+		});
+
+		// Result List
+		jQuery("li.result-list-li a").click(function() {
+			// First we store the local details of the link
+			var linkClass = jQuery(this).attr('class');
+			var strTitle = "";
+			if(linkClass.indexOf("title-link") !== -1){
+				// click on title
+				strTitle = "Title "+jQuery(this).text();
+			} else {
+				strTitle = jQuery(this).text();
+				// other clicks
+			}
+			TrackEvent('Result List','Click Item',strTitle,1);
+
+			// Second we store the type of thing that was clicked on - this parallels the result scan syntax
+			var baseResult = jQuery(this).parents("li.result-list-li");
+			var source = baseResult.find("dl.databaseName dd").text();
+			var type = baseResult.find("div.record-icon p.caption").text();
+			strTarget = source+" - "+type;
+			TrackEvent('Result List','Click Type',strTarget,1);
+		});
+
+		// Pagination links
+		jQuery("nav.results-paging a").click(function() {
+			strTitle = jQuery(this).attr('title');
+			TrackEvent('Pagination','Click',strTitle,1);
+		});	
+
+		// Branding footer
+		jQuery("div.branding-container a").click(function() {
+			strHREF = jQuery(this).attr('href');
+			TrackEvent('Branding','Link',strHREF,1);
+		});	
+
+		/* ####################################################################
+		####
+		#### Scan result list
+		# */
+		// Dead End links
+		jQuery("li.result-list-li").each(function(d,i) {
+		    /* For each result, we look for one of several conditions:
+		        1) "Online Access" link
+		        2) A record-formats-wrapper div (PDF, HTML, SFX buttons)
+		        3) An RTAC div (Real Time Availability Call)
+		       If none of these exist, then it is a dead link, and needs to be recorded
+		    */
+		    if(!jQuery(this).find("a#linkOnlineAccess")[0] && !jQuery(this).find("#linkFullTextfromERIC")[0]) {
+		        if(!jQuery(this).find("div.record-formats-wrapper")[0]) {
+		            if(!jQuery(this).find("div.rtac")[0]) {    
+		                var itemRef = jQuery.parseJSON(jQuery(this).find("input[name*='addVal']").attr("value"));
+		                itemRef = itemRef.db+" - "+itemRef.uiTerm+" - "+itemRef.title;
+		                TrackEvent('Result List','Dead End',itemRef,1);
+		            }            
+		        }
+		    }
+		});
+
+		// Record returned items
+		jQuery("li.result-list-li").each(function(d,i) {
+		    // We store five parameters: Source, Type, Database, Term, and Title
+		    // Source
+		    var source = jQuery(this).find("dl.databaseName dd").text();
+		    // Type
+		    var type = jQuery(this).find("div.record-icon p.caption").text();
+		    // Database, Term, and Title all come from one value string
+		    var addVal = jQuery(this).find("input[name*='addVal']").attr("value");
+		    result = jQuery.parseJSON(addVal);   
+		    var db = result.db;
+		    var uiTerm = result.uiTerm;
+		    var title = result.title;
+		    result = source+" - "+type+" - "+db+" - "+uiTerm+" - "+title;
+		    TrackEvent('Result List','Result',result,1);
+		});
+
+		/* ####################################################################
+		####
+		#### Search Errors
+		# */
+		jQuery("span.std-warning-text").each(function() {
+		    var errorMsg = jQuery(this).text();
+		    var searchTerm = jQuery("input#SearchTerm1").val();
+		    TrackEvent('Error',errorMsg,searchTerm,1);
+		});
+
+		/* ####################################################################
+		####
+		#### Record Page
+		# */
+		// Custom widgets (Google Scholar, etc)
+		jQuery("div.custom-widget a").click(function() {
+			strWidgetName = jQuery(this).closest("div").attr('data-key');
+			TrackEvent('Custom Widget',strWidgetName,'Click',1);
+		});
+		jQuery("div#worldcatplaceholder").click(function() {
+			TrackEvent('Custom Widget','Request from non-MIT Libraries','Click',1);
+		});
+
+
+
+
+	}
+
+	function GetSearchString(Mode,Action){
+		switch(Action) {
+			case 'basic':
+				strActionLabel = 'Basic ';
+				break;
+			case 'resul':
+				strActionLabel = 'Result ';
+				break;
+			case 'advan':
+				strActionLabel = 'Advanced ';
+				break;
+			default:
+				strActionLabel = 'Unknown_'+Action+' ';
+		}
+		// Grab the possible search strings - use these to identify what style form was submitted
+		strSimpleString = jQuery("input#SearchTerm1").val();
+		strString1 = jQuery("input#Searchbox1").val();
+		if(strSimpleString) {
+			var strSearchType = jQuery('input[name="SearchTag"]:checked').val();
+			switch(strSearchType) {
+				case 'RadioButtonSearchTag_':
+					strSearchTypeLabel = 'Keyword ';
+					break;
+				case 'RadioButtonSearchTag_TI':
+					strSearchTypeLabel = 'Title ';
+					break;
+				case 'RadioButtonSearchTag_AU':
+					strSearchTypeLabel = 'Author ';
+					break;
+				default:
+					strSearchTypeLabel = 'Unknown ';
+					break;
+			}
+			TrackEvent('Search',strActionLabel+strSearchTypeLabel+'Search',strSimpleString,1);
+		} else if(strString1) {
+			var strField1 = jQuery("input#DbTag_1").val();
+			var strOp2 = jQuery("input#Op_2").val();
+			var strString2 = jQuery("input#Searchbox2").val();
+			var strField2 = jQuery("input#DbTag_2").val();
+			var strOp3 = jQuery("input#Op_3").val();
+			var strString3 = jQuery("input#Searchbox3").val();
+			var strField3 = jQuery("input#DbTag_3").val();
+			var strComplexString = strString1+' in '+strField1+', '+strOp2+' '+strString2+' in '+strField2+', '+strOp3+' '+strString3+' in '+strField3;
+			TrackEvent('Search',strActionLabel+'Long Search',strComplexString,1);
+		} else {
+			TrackEvent('Search','Unrecognized Search','...',1);
+		}
+
+	}
+
+	function TrackEvent(Category,Action,Label,Value){
+		_gaq.push(['_trackEvent', Category, Action, Label, Value]);
+	}
+
+</script>
