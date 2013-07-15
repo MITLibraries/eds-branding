@@ -25,7 +25,7 @@ z-index: 999;
 
 /* Linklist container */
 .branding.linklist .header {
-  margin-top: 30px;
+	margin-top: 30px;
 	margin-bottom: 12px;
 	border-bottom: 3px solid #ededed;
 }
@@ -198,7 +198,7 @@ text-decoration: underline;
 	</div>
 </div>
 <div id="beta-banner">
-Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://libraries.mit.edu/forms-mit/tell-us.html">Let us know what you think!</a>
+Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://libraries.mit.edu/forms-mit/tell-us-bartonplus.html">Let us know what you think!</a>
 </div>
 <script type="text/javascript">
 
