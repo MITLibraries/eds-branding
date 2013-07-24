@@ -176,21 +176,20 @@ text-decoration: underline;
         <h2 class="title">Help</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
 				<li class="list-link"><a href="http://libraries.mit.edu/research-guides">Research Guides</a></li>
-				<li class="list-link"><a href="http://libraries.mit.edu/ask-us/index.html" target="_blank">Ask Us!</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/ask" target="_blank">Ask Us!</a></li>
 				<li class="list-link"><a href="http://libraries.mit.edu/consultations" target="_blank">Research consultations: meet with a librarian</a></li>
 				<li class="list-link"><a href="http://libraries.mit.edu/calendar" target="_blank">Library classes & workshops</a></li>
-				<li class="list-link"><a href="http://libraries.mit.edu/help/" target="_blank">More help</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/research-support" target="_blank">More help</a></li>
 			</ul>
 		</div>
 		<div class="item size1of3 last-item custombg">
         <h2 class="title">Visit the library</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
 				<li class="list-link"><a href="http://libraries.mit.edu/hours" target="_blank">Hours</a></li>
-				<li class="list-link"><a href="http://libraries.mit.edu/about/" target="_blank">List of libraries</a> | 
-				<a href="http://libraries.mit.edu/about/map.html" target="_blank">Map</a></li>
-                <li class="list-link"><a href="http://libraries.mit.edu/about/studyspaces/index.html" target="_blank">Individual study spaces</a></li>
-				<li class="list-link"><a href="http://libraries.mit.edu/about/studyspaces/groupstudy.html" target="_blank">Group study spaces</a></li>
-                <li class="list-link"><a href="http://libraries.mit.edu/sites/exhibits/" target="_blank">Exhibits/galleries</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/locations" target="_blank">List of libraries</a> | 
+				<a href="http://libraries.mit.edu/locations/#!map" target="_blank">Map</a></li>
+				<li class="list-link"><a href="http://libraries.mit.edu/study" target="_blank">Study spaces</a></li>
+                <li class="list-link"><a href="http://libraries.mit.edu/exhibits" target="_blank">Exhibits/galleries</a></li>
 				<li class="list-link"><a href="http://libguides.mit.edu/directory" target="_blank">Staff directory</a></li>
 				
 			</ul>
