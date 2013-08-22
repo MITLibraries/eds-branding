@@ -175,7 +175,8 @@ text-decoration: underline;
 		<div class="item size1of3 custombg">
         <h2 class="title">Help</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
-				<li class="list-link"><a href="http://libraries.mit.edu/research-guides">Research Guides</a></li>
+				<li class="list-link"><a href="http://libguides.mit.edu/content.php?pid=480407&sid=3936296">About BartonPlus</a></li>
+                                <li class="list-link"><a href="http://libraries.mit.edu/research-guides">Research Guides</a></li>
 				<li class="list-link"><a href="http://libraries.mit.edu/ask" target="_blank">Ask Us!</a></li>
 				<li class="list-link"><a href="http://libraries.mit.edu/consultations" target="_blank">Research consultations: meet with a librarian</a></li>
 				<li class="list-link"><a href="http://libraries.mit.edu/calendar" target="_blank">Library classes & workshops</a></li>
@@ -281,15 +282,41 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 			var strLabel = jQuery(this).attr('title');
 			TrackEvent('Left Sidebar','Sidebar',strLabel,1);
 		});
-		jQuery("div#column1 h3.collapse-toggle").click(function() {
-			var strTarget = jQuery(this).text().trim();
+		// "Breadbox" facet
+		jQuery("div#column1 div#breadbox a").click(function () {
+			var strPanelTitle = "Breadbox";
 			var strLabel = jQuery(this).attr('title');
-			TrackEvent('Left Sidebar',strTarget,strLabel,1);
+			var strClass = jQuery(this).attr('class');
+			if(strClass == 'search-terms'){
+				// Restore original search
+				strLabel = jQuery(this).parent().text().trim();
+			}
+			if(strLabel==='remove'){
+				// Remove limiter/expander
+				strLabel+=' '+jQuery(this).parents(".selected-limiters").children("h4").text().trim()+' '+jQuery(this).parent().children(".limiter").text().trim();
+			}
+			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
 		});
-		jQuery("div#column1 ul.rl-limiters a").click(function() {
-			var strLimiterText = jQuery(this).text();
-			var strCategory = 'Limiter '+jQuery(this).closest("div").attr('id');
-			TrackEvent('Left Sidebar',strCategory,strLimiterText,1);
+		// "Refine your results" facet
+		jQuery("div#column1 div#resultsLimiterControl a").click(function() {
+			var strPanelTitle = "Refine your results";
+			var strLabel = jQuery(this).attr('title');
+			if(strLabel === undefined) {
+				strLabel = jQuery(this).text().trim();
+			}
+			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
+		});
+		// All other facets
+		jQuery("div#column1 div.multiSelectPanel a").click(function() {
+			// identify what panel this came from
+			var strPanelTitle = jQuery(this).parents(".multiSelectPanel").children(".rl-lim-heading").text().trim();
+			var strLabel = jQuery(this).attr('title');
+			if(strLabel === undefined) {
+				strLabel = jQuery(this).text().trim();
+			}
+			// var strLink = jQuery(this).text().trim();
+			// alert('C Panel _'+strPanelTitle+'_ Label: _'+strLabel+'_ (Link: _'+strLink+'_)');
+			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
 		});
 
 		// Right sidebar
