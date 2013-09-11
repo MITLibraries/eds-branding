@@ -132,26 +132,58 @@ z-index: 999;
 	list-style:none;
 	padding: 0 0 0 12px;
 }
+
+/**
+ *  Placard styles
+ */
+div#bartonplus_placard {
+	background-color:#eee;
+	border:1px solid #adadad;
+	padding:2em;
+	padding-bottom:1em;
+	font-size:14px
+}
+div#bartonplus_placard h2 {
+	font-size:22px;
+	padding-bottom:.5em
+}
+div#bartonplus_placard ul.inline {
+	padding-bottom: 1em;
+}
+div#bartonplus_placard ul.inline li {
+	display:inline;
+	border-left: 1px solid #333;
+	padding: 0 0.5em;
+}
+div#bartonplus_placard ul.inline li:first-child {
+	border-left: 0;
+	padding-left: 0;
+}
+div#bartonplus_placard a {
+	color:#32327d
+}
+
 /* Beta banner styles */
 body {
-padding-top: 36px;
+	padding-top: 36px;
 }
 #beta-banner {
-top: 0px; 
-font-size: 1.5em; 
-display: block; 
-position: fixed; 
-background: none repeat scroll 0px 0px rgb(192, 80, 77); 
-color: white;  
-left: 0px; 
-border-bottom: 2px solid rgb(236, 135, 164); 
-height: 34px; 
-width: 100%;
+	top: 0px; 
+	font-size: 1.5em; 
+	display: block; 
+	position: fixed; 
+	background: none repeat scroll 0px 0px rgb(192, 80, 77); 
+	color: white;  
+	left: 0px; 
+	border-bottom: 2px solid rgb(236, 135, 164); 
+	height: 34px; 
+	width: 100%;
 }
 #beta-banner a {
-color: white !important;
-text-decoration: underline;
+	color: white !important;
+	text-decoration: underline;
 }
+
 //-->
 </style>
 
@@ -245,6 +277,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 //      Clicking in result list now identifies titles distinct from fulfillment links
 //      Click tracking also stores item type in 'click type' action
 // v2.6 Rebuilt left sidebar listener
+// v2.7 Placard styles
 
 		var strFormAction;
 
