@@ -367,15 +367,12 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 
 		// Result List
 		jQuery("li.result-list-li a").click(function() {
-			// First we store the local details of the link
+			// First we store the local details of the link that was clicked on (PDF link, full text, SFX link, title link, etc)
 			var linkClass = jQuery(this).attr('class');
-			var strTitle = "";
-			if(linkClass.indexOf("title-link") !== -1){
-				// click on title
-				strTitle = "Title "+jQuery(this).text();
-			} else {
-				strTitle = jQuery(this).text();
-				// other clicks
+			var strTitle = jQuery(this).text();
+			// We need to prepend "Title " to help determine what type of link was clicked on
+			if(linkClass !== undefined && linkClass.indexOf("title-link") !== -1) {
+				strTitle = "Title " + strTitle;
 			}
 			TrackEvent('Result List','Click Item',strTitle,1);
 
