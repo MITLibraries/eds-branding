@@ -140,27 +140,11 @@ div#bartonplus_placard {
 	background-color:#eee;
 	border:1px solid #adadad;
 	padding:2em;
-	padding-bottom:1em;
 	font-size:14px
 }
-div#bartonplus_placard h2 {
-	font-size:22px;
-	padding-bottom:.5em
-}
-div#bartonplus_placard ul.inline {
-	padding-bottom: 1em;
-}
-div#bartonplus_placard ul.inline li {
-	display:inline;
-	border-left: 1px solid #333;
-	padding: 0 0.5em;
-}
-div#bartonplus_placard ul.inline li:first-child {
-	border-left: 0;
-	padding-left: 0;
-}
-div#bartonplus_placard a {
-	color:#32327d
+div#bartonplus_placard iframe {
+	overflow: hidden;
+	height: 120px;
 }
 
 /* Beta banner styles */
@@ -279,6 +263,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 // v2.6 Rebuilt left sidebar listener
 // v2.7 Placard styles
 // v2.8 Tweaking "Click Item" routine to better capture link permutations
+// v2.9 Shrinking placard dimension to 120px with hidden overflow
 
 		var strFormAction;
 
