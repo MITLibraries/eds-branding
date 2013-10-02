@@ -264,6 +264,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 // v2.7 Placard styles
 // v2.8 Tweaking "Click Item" routine to better capture link permutations
 // v2.9 Shrinking placard dimension to 120px with hidden overflow
+// v3.0 Changing listeners for navigation and result list scanning, to keep pace with markup changes in EDS
 
 		var strFormAction;
 
@@ -371,7 +372,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 		});
 
 		// Pagination links
-		jQuery("nav.results-paging a").click(function() {
+		jQuery(".results-paging a").click(function() {
 			strTitle = jQuery(this).attr('title');
 			TrackEvent('Pagination','Click',strTitle,1);
 		});	
@@ -413,7 +414,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 		    // Type
 		    var type = jQuery(this).find("div.record-icon p.caption").text();
 		    // Database, Term, and Title all come from one value string
-		    var addVal = jQuery(this).find("input[name*='addVal']").attr("value");
+		    var addVal = jQuery(this).find(".record-additional a").attr("data-folder");
 		    result = jQuery.parseJSON(addVal);   
 		    var db = result.db;
 		    var uiTerm = result.uiTerm;
