@@ -265,6 +265,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 // v2.8 Tweaking "Click Item" routine to better capture link permutations
 // v2.9 Shrinking placard dimension to 120px with hidden overflow
 // v3.0 Changing listeners for navigation and result list scanning, to keep pace with markup changes in EDS
+// v3.1 Added listener for top toolbar
 
 		var strFormAction;
 
@@ -287,6 +288,12 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 		});
 
 		// ##################### Result Page
+		// Top toolbar ("New Search", "Can't Find What You Need?", etc)
+		jQuery("#toolbarControl a").click(function() {
+			var strTarget = jQuery(this).text().trim();
+			TrackEvent('Top Toolbar','Link',strTarget,1);
+		});
+
 		// Options toolbar
 		jQuery("div#optionsControls h3.collapse-toggle").click(function() {
 			var strTarget = jQuery(this).text().trim();
