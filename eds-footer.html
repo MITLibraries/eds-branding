@@ -168,6 +168,18 @@ body {
 	text-decoration: underline;
 }
 
+/**
+ *  Result List styles
+ */ 
+.externalLinks .custom-link {
+	border-right: 1px solid gray;
+	margin-right: 10px;
+	padding-top: 0;
+}
+.externalLinks .custom-link:last-child {
+	border-right: none;
+}
+
 //-->
 </style>
 
@@ -266,6 +278,7 @@ Welcome to BartonPlus, a new MIT Libraries search tool. <a href="https://librari
 // v2.9 Shrinking placard dimension to 120px with hidden overflow
 // v3.0 Changing listeners for navigation and result list scanning, to keep pace with markup changes in EDS
 // v3.1 Added listener for top toolbar
+// v3.2 Adding pipes between custom links in search result list (CSS only)
 
 		var strFormAction;
 
