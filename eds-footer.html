@@ -280,6 +280,7 @@ Welcome to BartonPlus. <a href="https://libraries.mit.edu/forms-mit/tell-us-bart
 // v3.1 Added listener for top toolbar
 // v3.2 Adding pipes between custom links in search result list (CSS only)
 // v3.3 Changing text in beta banner to just read "Welcome to BartonPlus. Let us know what you think!"
+// v3.4 Reworking recording of returned results, and clicks thereupon
 
 		var strFormAction;
 
@@ -375,21 +376,48 @@ Welcome to BartonPlus. <a href="https://libraries.mit.edu/forms-mit/tell-us-bart
 
 		// Result List
 		jQuery("li.result-list-li a").click(function() {
-			// First we store the local details of the link that was clicked on (PDF link, full text, SFX link, title link, etc)
-			var linkClass = jQuery(this).attr('class');
-			var strTitle = jQuery(this).text();
-			// We need to prepend "Title " to help determine what type of link was clicked on
-			if(linkClass !== undefined && linkClass.indexOf("title-link") !== -1) {
-				strTitle = "Title " + strTitle;
-			}
-			TrackEvent('Result List','Click Item',strTitle,1);
-
-			// Second we store the type of thing that was clicked on - this parallels the result scan syntax
+			// Trying to unify the click behavior that gets stored
 			var baseResult = jQuery(this).parents("li.result-list-li");
-			var source = baseResult.find("dl.databaseName dd").text();
+			var thisClick = new Object();
+
+		    // Source
+		    var source = baseResult.find("div.display-info>span");
+		    if(source.attr("class")==undefined){
+				var sourceName = source.html().substr(11).trim();
+			} else {
+				var sourceName = '';
+			}
+			thisClick.sourceName = sourceName;
+
+			// Type
 			var type = baseResult.find("div.record-icon p.caption").text();
-			strTarget = source+" - "+type;
-			TrackEvent('Result List','Click Type',strTarget,1);
+			thisClick.itemType = type;
+
+			// Clicked Text
+			var linkClass = jQuery(this).attr('class');
+			var strLink = jQuery(this).text();
+			// Substitute item title for just "Title" to make analysis easier
+			if(linkClass !== undefined && linkClass.indexOf("title-link") !== -1) {
+				strLink = "Title";
+			}
+			thisClick.clickedText = strLink;
+
+			// Item title
+			var strTitle = baseResult.find("a.title-link").text();
+			thisClick.itemTitle = strTitle;
+
+			// recordIndex
+			var recordIndex = baseResult.find('.record-index').text().trim();
+			thisClick.recordIndex = recordIndex;
+
+			// journal title, if possible
+		    var journalTitle = baseResult.find('.display-info cite').text().trim();
+		    if(journalTitle=='') {
+		    	journalTitle = baseResult.find('.display-info em').text().trim();
+		    }
+		    thisClick.journalTitle = journalTitle;
+
+			TrackEvent('Result List','Clicked',JSON.stringify(thisClick),1);
 		});
 
 		// Pagination links
@@ -429,19 +457,47 @@ Welcome to BartonPlus. <a href="https://libraries.mit.edu/forms-mit/tell-us-bart
 
 		// Record returned items
 		jQuery("li.result-list-li").each(function(d,i) {
-		    // We store five parameters: Source, Type, Database, Term, and Title
-		    // Source
-		    var source = jQuery(this).find("dl.databaseName dd").text();
+		    // We store several parameters about each returned result, encoded in a JSON object
+			var thisResult = new Object();
+
+			// Database name
+			var source = jQuery(this).find("div.display-info>span");
+		    if(source.attr("class")==undefined){
+				var sourceName = source.html().substr(11).trim();
+			} else {
+				var sourceName = '';
+			}
+			thisResult.sourceName = sourceName;
+
 		    // Type
 		    var type = jQuery(this).find("div.record-icon p.caption").text();
+		    thisResult.itemType = type;
+
 		    // Database, Term, and Title all come from one value string
-		    var addVal = jQuery(this).find(".record-additional a").attr("data-folder");
-		    result = jQuery.parseJSON(addVal);   
+		    var addToFolder = jQuery(this).find('a[name="addToFolder"]').attr("data-folder");
+			result = jQuery.parseJSON(addToFolder);  
+
 		    var db = result.db;
+		    thisResult.sourceDB = db;
+
 		    var uiTerm = result.uiTerm;
+		    thisResult.itemID = uiTerm;
+
 		    var title = result.title;
-		    result = source+" - "+type+" - "+db+" - "+uiTerm+" - "+title;
-		    TrackEvent('Result List','Result',result,1);
+		    thisResult.itemTitle = title;
+
+		    // recordIndex helps indicate how deep users go into search results
+		    var recordIndex = jQuery(this).find('.record-index').text().trim();
+		    thisResult.recordIndex = recordIndex;
+
+		    // journal title helps monitor whether we need deeper holdings
+		    var journalTitle = jQuery(this).find('.display-info cite').text().trim();
+		    if(journalTitle=='') {
+		    	journalTitle = jQuery(this).find('.display-info em').text().trim();
+		    }
+		    thisResult.journalTitle = journalTitle;
+
+		    TrackEvent('Result List','Result',JSON.stringify(thisResult),1);
 		});
 
 		/* ####################################################################
