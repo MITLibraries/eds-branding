@@ -1,3 +1,4 @@
+3.0i
 <style>
 #rtac_panel{display:none !important}
 </style>
@@ -210,7 +211,8 @@ div#bartonplus_placard iframe {
 <script type="text/javascript">
 
 	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', 'UA-1760176-20']);
+	// The Development EDS property ID under Google Analytics
+	_gaq.push(['_setAccount', 'UA-1760176-22']);
 	_gaq.push(['_trackPageview']);
 
 	(function() {
@@ -251,18 +253,12 @@ div#bartonplus_placard iframe {
 // v2.5 Added plain text source and type strings to result scanning
 //      Clicking in result list now identifies titles distinct from fulfillment links
 //      Click tracking also stores item type in 'click type' action
-// v2.6 Rebuilt left sidebar listener
-// v2.7 Placard styles
-// v2.8 Tweaking "Click Item" routine to better capture link permutations
-// v2.9 Shrinking placard dimension to 120px with hidden overflow
-// v3.0 Changing listeners for navigation and result list scanning, to keep pace with markup changes in EDS
-// v3.1 Added listener for top toolbar
-// v3.2 Adding pipes between custom links in search result list (CSS only)
-// v3.3 Changing text in beta banner to just read "Welcome to BartonPlus. Let us know what you think!"
-// v3.4 Reworking recording of returned results, and clicks thereupon
-// v3.5 Modified footer as per Remlee Green email on 10-06-2014 (rw) 
-// v3.6 Added SSO note to beta-banner (mb)
-// v3.7 Removing beta-banner (mb)
+// v2.6 Refactoring left sidebare interactions
+// v2.7 Adding placard styles and event listeners
+// v2.8 Adding listener to top toolbar
+// v2.9 Adding pipes between custom links in search result list (CSS only)
+// v3.0 Reworking recording of returned results, and clicks thereupon
+// v3.1 Removing red "beta-banner" bar as a test
 
 		var strFormAction;
 
@@ -284,7 +280,10 @@ div#bartonplus_placard iframe {
 			GetSearchString("Long",strFormAction);;
 		});
 
-		// ##################### Result Page
+		/* ####################################################################
+		####
+		#### Results Pane Interactions
+		# */
 		// Top toolbar ("New Search", "Can't Find What You Need?", etc)
 		jQuery("#toolbarControl a").click(function() {
 			var strTarget = jQuery(this).text().trim();
@@ -307,6 +306,7 @@ div#bartonplus_placard iframe {
 			var strLabel = jQuery(this).attr('title');
 			TrackEvent('Left Sidebar','Sidebar',strLabel,1);
 		});
+		// Rebuilt left-column facet listener
 		// "Breadbox" facet
 		jQuery("div#column1 div#breadbox a").click(function () {
 			var strPanelTitle = "Breadbox";
@@ -321,14 +321,18 @@ div#bartonplus_placard iframe {
 				strLabel+=' '+jQuery(this).parents(".selected-limiters").children("h4").text().trim()+' '+jQuery(this).parent().children(".limiter").text().trim();
 			}
 			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
+			// alert('A Panel _'+strPanelTitle+'_ Label: _'+strLabel+'_');
 		});
 		// "Refine your results" facet
 		jQuery("div#column1 div#resultsLimiterControl a").click(function() {
 			var strPanelTitle = "Refine your results";
 			var strLabel = jQuery(this).attr('title');
+			var strClass = jQuery(this).attr('class');
+			alert('Details: _'+strLabel+'_ _'+strClass+'_');
 			if(strLabel === undefined) {
 				strLabel = jQuery(this).text().trim();
 			}
+			// alert('B Panel _'+strPanelTitle+'_ Label: _'+strLabel+'_');
 			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
 		});
 		// All other facets
@@ -339,9 +343,30 @@ div#bartonplus_placard iframe {
 			if(strLabel === undefined) {
 				strLabel = jQuery(this).text().trim();
 			}
-			// var strLink = jQuery(this).text().trim();
+			var strLink = jQuery(this).text().trim();
 			// alert('C Panel _'+strPanelTitle+'_ Label: _'+strLabel+'_ (Link: _'+strLink+'_)');
 			TrackEvent('Left Sidebar',strPanelTitle,strLabel,1);
+		});
+		// Testing storing panel form contents
+		jQuery("form").submit(function() {
+			strClass = jQuery(this).attr('class');
+			strID = jQuery(this).attr('id');
+			strAction = jQuery(this).attr('action');
+			// alert('Submit _'+strID+'_ _'+strClass+'_ _'+strAction+'_');
+			// from http://stackoverflow.com/questions/3432614/using-jquery-to-store-the-state-of-a-complicated-form
+			/*
+			formObject = new Object;
+			jQuery(this).find("input, select").each(function() {
+				if(this.id){
+					if( jQuery(this).attr("type")=='checkbox' || jQuery(this).attr("type")=='radio') {
+						formObject[this.id] = jQuery(this).attr("checked");
+					} else {
+						formObject[this.id] = jQuery(this).val();
+					}
+				}
+			});				
+			alert(JSON.stringify(formObject));
+			*/
 		});
 
 		// Right sidebar
@@ -403,7 +428,7 @@ div#bartonplus_placard iframe {
 		});
 
 		// Pagination links
-		jQuery(".results-paging a").click(function() {
+		jQuery("nav.results-paging a").click(function() {
 			strTitle = jQuery(this).attr('title');
 			TrackEvent('Pagination','Click',strTitle,1);
 		});	
@@ -505,8 +530,25 @@ div#bartonplus_placard iframe {
 			TrackEvent('Custom Widget','Request from non-MIT Libraries','Click',1);
 		});
 
+		/* ####################################################################
+		####
+		#### Catchall listeners
+		# */
+		// These listeners are targeted primarily for elements that appear in the DOM after it has been loaded (RTAC information, placards, modal forms, etc)
+		/*
+		jQuery("body").submit(function() {
+			alert('Submit event bubbled to body');
+		});
+		*/
 
-
+		jQuery("body").click(function(e) {
+			// check for clicks inside the placard
+		    if (jQuery(e.target).closest("#bartonplus_placard").html() && jQuery(e.target).attr('href')) {
+		        var thePlacard = jQuery(e.target).closest("#bartonplus_placard").find("[data-role='term']").text();
+		        var theLink = jQuery(e.target).text();
+		        TrackEvent('Placard Test 1',thePlacard,theLink,1);
+			}
+		});
 
 	}
 
@@ -562,6 +604,8 @@ div#bartonplus_placard iframe {
 
 	function TrackEvent(Category,Action,Label,Value){
 		_gaq.push(['_trackEvent', Category, Action, Label, Value]);
+		console.log('C'+Category+' _ A'+Action+' _ L'+Label+' _ V'+Value);
 	}
+
 
 </script>
