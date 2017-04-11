@@ -216,9 +216,12 @@ div#bartonplus_placard iframe {
 	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 	// The Production EDS property ID under Google Analytics
-	// ga('create', 'UA-1760176-20', 'auto');
+	// var propertyID = 'UA-1760176-1';
 	// The Development EDS property ID under Google Analytics
-	ga('create', 'UA-1760176-32', 'auto');
+	var propertyID = 'UA-1760176-26';
+	ga('create', propertyID, 'auto', {'allowLinker': true});
+	ga('require', 'linker');
+	ga('linker:autoLink', ['libraries-dev.mit.edu', 'libraries-test.mit.edu'] );
 	ga('send', 'pageview');
 
 	// This comes from the EBSCO Administration wiki
