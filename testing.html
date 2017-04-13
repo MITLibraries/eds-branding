@@ -21,9 +21,9 @@ Testing footer 4.1.0
 .last-item{float:none;width:auto;_position:relative;_left:-3px;_margin-right:-3px;}
 
 .branding-container {
-    margin: 0 auto;
-    width:800px;
-    text-align:center;
+	margin: 0 auto;
+	width:800px;
+	text-align:center;
 	z-index: 999;
 }
 
@@ -217,11 +217,15 @@ div#bartonplus_placard iframe {
 
 	// The Production EDS property ID under Google Analytics
 	// var propertyID = 'UA-1760176-1';
+	// var propertyArray = ['libraries.mit.edu', 'libguides.mit.edu', 'libcal.mit.edu', 'libanswers.mit.edu'];
+
 	// The Development EDS property ID under Google Analytics
 	var propertyID = 'UA-1760176-26';
+	var propertyArray = ['libraries-dev.mit.edu', 'libraries-test.mit.edu'];
+
 	ga('create', propertyID, 'auto', {'allowLinker': true});
 	ga('require', 'linker');
-	ga('linker:autoLink', ['libraries-dev.mit.edu', 'libraries-test.mit.edu'] );
+	ga('linker:autoLink', propertyArray);
 	ga('send', 'pageview');
 
 	// This comes from the EBSCO Administration wiki
