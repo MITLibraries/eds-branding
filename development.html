@@ -525,54 +525,115 @@ div#bartonplus_placard iframe {
 
 	}
 
-	function GetSearchString(Mode){
-		var action = jQuery("form#aspnetForm").attr("action").substr(0,5)
-		switch(action) {
+	function GetComplexSearch() {
+		// Assemble the more complex search string
+		var strString1 = jQuery("input#Searchbox1").val();
+		var strField1 = jQuery("input#DbTag_1").val();
+
+		var strOp2 = jQuery("input#Op_2").val();
+		var strString2 = jQuery("input#Searchbox2").val();
+		var strField2 = jQuery("input#DbTag_2").val();
+
+		var strOp3 = jQuery("input#Op_3").val();
+		var strString3 = jQuery("input#Searchbox3").val();
+		var strField3 = jQuery("input#DbTag_3").val();
+
+		complexstring = strString1 +' in '+strField1+', '+strOp2+' '+strString2+' in '+strField2+', '+strOp3+' '+strString3+' in '+strField3;
+
+		return complexstring;
+	}
+
+	function GetFormAction() {
+		switch( jQuery("form#aspnetForm").attr("action").substr(0,5) ) {
+			case 'advan':
+				action = 'Advanced';
+				break;
 			case 'basic':
-				strActionLabel = 'Basic ';
+			case './bas':
+				action = 'Basic';
+				break;
+			case 'detai':
+				action = 'Detail';
+				break;
+			case 'histo':
+			case './his':
+				action = 'History';
 				break;
 			case 'resul':
-				strActionLabel = 'Result ';
-				break;
-			case 'advan':
-				strActionLabel = 'Advanced ';
+			case './res':
+				action = 'Result';
 				break;
 			default:
-				strActionLabel = 'Unknown_'+action+' ';
+				action = 'Unknown: ' + jQuery("form#aspnetForm").attr("action").substr(0,5);
 		}
-		// Grab the possible search strings - use these to identify what style form was submitted
-		strSimpleString = jQuery("input#SearchTerm1").val();
-		strString1 = jQuery("input#Searchbox1").val();
-		if(strSimpleString) {
-			var strSearchType = jQuery('input[name="SearchTag"]:checked').val();
-			switch(strSearchType) {
-				case 'RadioButtonSearchTag_':
-					strSearchTypeLabel = 'Keyword ';
-					break;
-				case 'RadioButtonSearchTag_TI':
-					strSearchTypeLabel = 'Title ';
-					break;
-				case 'RadioButtonSearchTag_AU':
-					strSearchTypeLabel = 'Author ';
-					break;
-				default:
-					strSearchTypeLabel = 'Unknown ';
-					break;
-			}
-			TrackEvent('Search',strActionLabel+strSearchTypeLabel+'Search',strSimpleString,1);
-		} else if(strString1) {
-			var strField1 = jQuery("input#DbTag_1").val();
-			var strOp2 = jQuery("input#Op_2").val();
-			var strString2 = jQuery("input#Searchbox2").val();
-			var strField2 = jQuery("input#DbTag_2").val();
-			var strOp3 = jQuery("input#Op_3").val();
-			var strString3 = jQuery("input#Searchbox3").val();
-			var strField3 = jQuery("input#DbTag_3").val();
-			var strComplexString = strString1+' in '+strField1+', '+strOp2+' '+strString2+' in '+strField2+', '+strOp3+' '+strString3+' in '+strField3;
-			TrackEvent('Search',strActionLabel+'Long Search',strComplexString,1);
+		return action;
+	}
+
+	function GetSearchType() {
+		switch( jQuery('input[name="SearchTag"]:checked').val() ) {
+			case 'RadioButtonSearchTag_':
+				type = 'Keyword';
+				break;
+			case 'RadioButtonSearchTag_TI':
+				type = 'Title';
+				break;
+			case 'RadioButtonSearchTag_AU':
+				type = 'Author ';
+				break;
+			default:
+				type = 'Unknown: ' + jQuery('input[name="SearchTag"]:checked').val();
+				break;
+		}
+		return type;
+	}
+
+	function GetSearchString(Mode){
+		// Initialize object containing search parameters
+		var search = new Object();
+
+		// Store search type/mode ("Basic", "Long", etc - based on what button
+		// was clicked)
+		search.mode = Mode;
+
+		// Look up search form action
+		search.action = GetFormAction();
+
+		// Parse the search type and other fields based on what search string
+		// was found
+		if( jQuery("input#SearchTerm1").val() ) {
+			// We're recording the simple search form at the top of the page.
+
+			// Store the search type
+			search.type = GetSearchType();
+
+			// Store the search string for a simple form
+			search.string = jQuery("input#SearchTerm1").val();
+
+		} else if( jQuery("input#Searchbox1").val() ) {
+			// This is the long search form, which is hard to track. This is
+			// our best guess yet.
+			search.type = 'Long';
+
+			// Simple string (just the first text box)
+			search.string = jQuery("input#Searchbox1").val();
+
+			// Complex search string (multiple lines of booleans and custom fields)
+			search.complexstring = GetComplexSearch();
+
 		} else {
-			TrackEvent('Search','Unrecognized Search','...',1);
+			// This is an unrecognized type of search, so we're not sure
+			// where to find the search string.
+			search.type = 'Unrecognized';
+
 		}
+
+		// Record the search event
+		TrackEvent(
+			'', // Category isn't needed, but not entirely gone
+			'Search',
+			JSON.stringify(search),
+			1
+		);
 
 	}
 
