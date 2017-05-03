@@ -239,24 +239,18 @@ div#bartonplus_placard iframe {
 
 	function InitAnalytics(){
 
-		var strFormAction;
-
-		// Search forms
-		// TODO - capture advanced search, visual search, etc
+		/* ####################################################################
+		####
+		#### Search forms
+		# */
 		jQuery("input#SearchButton").click(function() { // Basic search button, at the top of the form
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Short",strFormAction);;
+			GetSearchString("Short");
 		});
 		jQuery("input#ctl00_ctl00_FindField_FindField_ctl00_SearchButton").click(function() {
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Visual",strFormAction);;
+			GetSearchString("Visual");
 		});
 		jQuery("input#ctl00_ctl00_MainContentArea_MainContentArea_ctrlLimiters_btnSearch").click(function() {
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Long",strFormAction);;
+			GetSearchString("Long");
 		});
 
 		/* ####################################################################
@@ -531,8 +525,9 @@ div#bartonplus_placard iframe {
 
 	}
 
-	function GetSearchString(Mode,Action){
-		switch(Action) {
+	function GetSearchString(Mode){
+		var action = jQuery("form#aspnetForm").attr("action").substr(0,5)
+		switch(action) {
 			case 'basic':
 				strActionLabel = 'Basic ';
 				break;
@@ -543,7 +538,7 @@ div#bartonplus_placard iframe {
 				strActionLabel = 'Advanced ';
 				break;
 			default:
-				strActionLabel = 'Unknown_'+Action+' ';
+				strActionLabel = 'Unknown_'+action+' ';
 		}
 		// Grab the possible search strings - use these to identify what style form was submitted
 		strSimpleString = jQuery("input#SearchTerm1").val();
