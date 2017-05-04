@@ -492,15 +492,23 @@ div#bartonplus_placard iframe {
 
 		/* ####################################################################
 		####
-		#### Record Page
+		#### Detail Record Page
 		# */
-		// Custom widgets (Google Scholar, etc)
 		jQuery("div.custom-widget a").click(function() {
-			strWidgetName = jQuery(this).closest("div").attr('data-key');
-			TrackEvent('Custom Widget',strWidgetName,'Click',1);
+			TrackEvent(
+				'',
+				'Detail Page Widget',
+				jQuery(this).closest("div").attr('data-key'), // Widget name
+				1
+			);
 		});
 		jQuery("div#worldcatplaceholder").click(function() {
-			TrackEvent('Custom Widget','Request from non-MIT Libraries','Click',1);
+			TrackEvent(
+				'',
+				'Detail Page Widget',
+				'Request from non-MIT Libraries',
+				1
+			);
 		});
 
 		/* ####################################################################
