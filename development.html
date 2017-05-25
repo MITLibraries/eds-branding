@@ -610,8 +610,8 @@ div#bartonplus_placard iframe {
 	function TrackEvent(Category,Action,Label,Value){
 		ga('send', {
 			hitType: 'event',
-			eventCategory: Category,
-			eventAction: Action,
+			eventCategory: 'EDS',
+			eventAction: Category + ' ' + Action,
 			eventLabel: Label,
 			eventValue: Value
 		});
