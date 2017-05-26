@@ -539,6 +539,11 @@ div#bartonplus_placard iframe {
 			strToolName = jQuery(this).attr('title');
 			TrackEvent('Detail Page','Sidebar',strToolName,1);
 		});
+		// Tool form (triggered by right sidebar)
+		jQuery('#ToolPanelContent input').click(function() {
+			strToolName = jQuery(this).attr('value');
+			TrackEvent('Detail Page','Tool Use',strToolName,1);
+		});
 
 		/* ####################################################################
 		####
