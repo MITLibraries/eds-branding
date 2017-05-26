@@ -534,6 +534,11 @@ div#bartonplus_placard iframe {
 		jQuery("div#worldcatplaceholder").click(function() {
 			TrackEvent('Custom Widget','Request from non-MIT Libraries','Click',1);
 		});
+		// Right sidebar tools
+		jQuery(".article-tool a").click(function() {
+			strToolName = jQuery(this).attr('title');
+			TrackEvent('Detail Page','Sidebar',strToolName,1);
+		});
 
 		/* ####################################################################
 		####
