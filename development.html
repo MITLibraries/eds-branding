@@ -526,6 +526,14 @@ div#bartonplus_placard iframe {
 		####
 		#### Record Page
 		# */
+		// Left sidebar
+		jQuery("body.detail #column1 a").click(function() {
+			var strLinkText = jQuery(this).text().trim();
+			if(!strLinkText) {
+				strLinkText = jQuery(this).attr('id');
+			}
+			TrackEvent('Detail Page', 'Left Sidebar', strLinkText, 1);
+		});
 		// Custom widgets (Google Scholar, etc)
 		jQuery("div.custom-widget a").click(function() {
 			strWidgetName = jQuery(this).closest("div").attr('data-key');
