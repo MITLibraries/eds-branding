@@ -502,6 +502,14 @@ div#bartonplus_placard iframe {
 		####
 		#### Record Page
 		# */
+		// Left sidebar
+		jQuery("body.detail #column1 a").click(function() {
+			var strLinkText = jQuery(this).text().trim();
+			if(!strLinkText) {
+				strLinkText = jQuery(this).attr('id');
+			}
+			TrackEvent('Detail Page', 'Left Sidebar', strLinkText, 1);
+		});
 		// Custom widgets (Google Scholar, etc)
 		jQuery("div.custom-widget a").click(function() {
 			strWidgetName = jQuery(this).closest("div").attr('data-key');
@@ -509,6 +517,26 @@ div#bartonplus_placard iframe {
 		});
 		jQuery("div#worldcatplaceholder").click(function() {
 			TrackEvent('Custom Widget','Request from non-MIT Libraries','Click',1);
+		});
+		// Right sidebar tools
+		jQuery(".article-tool a").click(function() {
+			strToolName = jQuery(this).attr('title');
+			TrackEvent('Detail Page','Sidebar',strToolName,1);
+		});
+		// Tool form (triggered by right sidebar)
+		jQuery("#ToolPanelContent").click(function( event ) {
+			if ("submit" === event.target.type) {
+				var panel = jQuery("#ToolPanelContent h2.panel-header").text().trim();
+				TrackEvent('Detail Page', 'Tool Use ' + event.target.type, panel, 1);
+			}
+		});
+		// RTAC panel
+		jQuery("body.detail .rtac-table a").click(function() {
+			TrackEvent('Detail Page', 'RTAC Table', jQuery(this).text().trim(), 1);
+		});
+		// Navigation
+		jQuery("body.detail .nav-list a").click(function() {
+			TrackEvent('Detail Page', 'Pagination', jQuery(this).text().trim(), 1);
 		});
 
 
