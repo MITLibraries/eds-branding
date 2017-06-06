@@ -1,0 +1,21 @@
+{
+  "name": "eds-branding",
+  "version": "1.0.0",
+  "description": "A set of branding footers for the EBSCO Discovery Service",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MITLibraries/eds-branding.git"
+  },
+  "author": "MIT Libraries",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/MITLibraries/eds-branding/issues"
+  },
+  "homepage": "https://github.com/MITLibraries/eds-branding#readme",
+  "dependencies": {
+    "glob": "^7.1.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
