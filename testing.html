@@ -171,6 +171,7 @@ div#bartonplus_placard iframe {
 	<div class="container header">
 		<h2 class="title icon">MIT Libraries Services &amp; Information</h2>
 	</div>
+
 	<div class="group">
 		<div class="item size1of3 custombg">
 		<h2 class="title">Other search tools</h2><!-- Change this Heading Title to your custom title text -->
@@ -217,8 +218,8 @@ div#bartonplus_placard iframe {
 	// var propertyArray = ['ebscohost.com'];
 
 	// The Development EDS property ID under Google Analytics
-	var propertyID = 'UA-1760176-22';
-	var propertyArray = ['ebscohost.com'];
+	var propertyID = 'UA-1760176-32';
+	var propertyArray = ['mit.edu','herokuapp.com','ebscohost.com'];
 
 	ga('create', propertyID, 'auto', {'allowLinker': true});
 	ga('require', 'linker');
@@ -546,9 +547,6 @@ div#bartonplus_placard iframe {
 			TrackEvent('Detail Page', 'Pagination', jQuery(this).text().trim(), 1);
 		});
 
-
-
-
 	}
 
 	function GetSearchString(Mode,Action){
@@ -604,8 +602,8 @@ div#bartonplus_placard iframe {
 	function TrackEvent(Category,Action,Label,Value){
 		ga('send', {
 			hitType: 'event',
-			eventCategory: 'EDS',
-			eventAction: Category + ' ' + Action,
+			eventCategory: Category,
+			eventAction: Action,
 			eventLabel: Label,
 			eventValue: Value
 		});

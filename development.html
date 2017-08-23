@@ -1,4 +1,4 @@
-Development footer 3.2
+Development footer 3.9
 <style>
 #rtac_panel{display:none !important}
 </style>
@@ -171,9 +171,10 @@ div#bartonplus_placard iframe {
 	<div class="container header">
 		<h2 class="title icon">MIT Libraries Services &amp; Information</h2>
 	</div>
+ 
 	<div class="group">
 		<div class="item size1of3 custombg">
-		<h2 class="title">Other search tools</h2><!-- Change this Heading Title to your custom title text -->
+			<h2 class="title">Other search tools</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
 				<li class="list-link prof1"><a href="https://mit.worldcat.org/">MIT’s WorldCat</a></li>
 				<li class="list-link prof2"><a href="https://libraries.mit.edu/vera">Vera: Databases &amp; e-journals</a></li>
@@ -183,24 +184,24 @@ div#bartonplus_placard iframe {
 			</ul>
 		</div>
 		<div class="item size1of3 custombg">
-		<h2 class="title">Help</h2><!-- Change this Heading Title to your custom title text -->
+			<h2 class="title">Help</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
-				<li class="list-link"><a href="http://libguides.mit.edu/c.php?g=176393&p=1160683">About BartonPlus</a></li>
-				<li class="list-link"><a href="https://libraries.mit.edu/experts">Research guides &amp; expert librarians</a></li>
-				<li class="list-link"><a href="https://libraries.mit.edu/ask" target="_blank">Ask Us</a></li>
+				<li class="list-link"><a href="https://libraries.mit.edu/research-guides">Research Guides</a></li>
+				<li class="list-link"><a href="https://libraries.mit.edu/ask" target="_blank">Ask Us!</a></li>
 				<li class="list-link"><a href="https://libraries.mit.edu/consultations" target="_blank">Research consultations: meet with a librarian</a></li>
 				<li class="list-link"><a href="https://libraries.mit.edu/calendar" target="_blank">Library classes &amp; workshops</a></li>
 				<li class="list-link"><a href="https://libraries.mit.edu/research-support" target="_blank">More help</a></li>
 			</ul>
 		</div>
 		<div class="item size1of3 last-item custombg">
-		<h2 class="title">Visit the library</h2><!-- Change this Heading Title to your custom title text -->
+			<h2 class="title">Visit the library</h2><!-- Change this Heading Title to your custom title text -->
 			<ul class="menu">
 				<li class="list-link"><a href="https://libraries.mit.edu/hours" target="_blank">Hours</a></li>
-				<li class="list-link"><a href="https://libraries.mit.edu/map" target="_blank">Map of locations</a></li>
+				<li class="list-link"><a href="https://libraries.mit.edu/locations" target="_blank">List of libraries</a> | 
+				<a href="https://libraries.mit.edu/locations/#!map" target="_blank">Map</a></li>
 				<li class="list-link"><a href="https://libraries.mit.edu/study" target="_blank">Study spaces</a></li>
 				<li class="list-link"><a href="https://libraries.mit.edu/exhibits" target="_blank">Exhibits/galleries</a></li>
-				<li class="list-link"><a href="https://libraries.mit.edu/contact" target="_blank">Contact us</a></li>
+				<li class="list-link"><a href="https://libguides.mit.edu/directory" target="_blank">Staff directory</a></li>
 			</ul>
 		</div>
 	</div>
@@ -217,8 +218,8 @@ div#bartonplus_placard iframe {
 	// var propertyArray = ['ebscohost.com'];
 
 	// The Development EDS property ID under Google Analytics
-	var propertyID = 'UA-1760176-22';
-	var propertyArray = ['ebscohost.com'];
+	var propertyID = 'UA-1760176-32';
+	var propertyArray = ['mit.edu','herokuapp.com','ebscohost.com'];
 
 	ga('create', propertyID, 'auto', {'allowLinker': true});
 	ga('require', 'linker');
@@ -239,50 +240,18 @@ div#bartonplus_placard iframe {
 
 	function InitAnalytics(){
 
-// This is the second iteration of tracking code for EDS.
-// Changelog:
-// v1 Left and right sidebar of results list
-// v2 Options toolbar of results list
-//    Additional tracking of left sidebar filters
-//    Branding footer links
-//    Links within a result in the list
-//    Custom widgets on the record page
-// v2.1 Added WorldCat widget on record page
-//    Added 'Action' value to "Unknown" case statement to identify what forms we are missing.
-// v2.2 Added pagination links
-// v2.3 Added search result scanning
-// v2.4 Improved search result scanning to parse JSON identifier
-//      Add scan for dead end result
-//      Recording error messages (no results warnings)
-// v2.5 Added plain text source and type strings to result scanning
-//      Clicking in result list now identifies titles distinct from fulfillment links
-//      Click tracking also stores item type in 'click type' action
-// v2.6 Refactoring left sidebare interactions
-// v2.7 Adding placard styles and event listeners
-// v2.8 Adding listener to top toolbar
-// v2.9 Adding pipes between custom links in search result list (CSS only)
-// v3.0 Reworking recording of returned results, and clicks thereupon
-// v3.1 Removing red "beta-banner" bar as a test
-// v3.2 Switches to new Google Analytics script
-
-		var strFormAction;
-
-		// Search forms
-		// TODO - capture advanced search, visual search, etc
+		/* ####################################################################
+		####
+		#### Search forms
+		# */
 		jQuery("input#SearchButton").click(function() { // Basic search button, at the top of the form
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Short",strFormAction);;
+			GetSearchString("Short");
 		});
 		jQuery("input#ctl00_ctl00_FindField_FindField_ctl00_SearchButton").click(function() {
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Visual",strFormAction);;
+			GetSearchString("Visual");
 		});
 		jQuery("input#ctl00_ctl00_MainContentArea_MainContentArea_ctrlLimiters_btnSearch").click(function() {
-			strFormAction = jQuery("form#aspnetForm").attr("action");
-			strFormAction = strFormAction.substr(0,5);
-			GetSearchString("Long",strFormAction);;
+			GetSearchString("Long");
 		});
 
 		/* ####################################################################
@@ -585,53 +554,115 @@ div#bartonplus_placard iframe {
 
 	}
 
-	function GetSearchString(Mode,Action){
-		switch(Action) {
+	function GetComplexSearch() {
+		// Assemble the more complex search string
+		var strString1 = jQuery("input#Searchbox1").val();
+		var strField1 = jQuery("input#DbTag_1").val();
+
+		var strOp2 = jQuery("input#Op_2").val();
+		var strString2 = jQuery("input#Searchbox2").val();
+		var strField2 = jQuery("input#DbTag_2").val();
+
+		var strOp3 = jQuery("input#Op_3").val();
+		var strString3 = jQuery("input#Searchbox3").val();
+		var strField3 = jQuery("input#DbTag_3").val();
+
+		complexstring = strString1 +' in '+strField1+', '+strOp2+' '+strString2+' in '+strField2+', '+strOp3+' '+strString3+' in '+strField3;
+
+		return complexstring;
+	}
+
+	function GetFormAction() {
+		switch( jQuery("form#aspnetForm").attr("action").substr(0,5) ) {
+			case 'advan':
+				action = 'Advanced';
+				break;
 			case 'basic':
-				strActionLabel = 'Basic ';
+			case './bas':
+				action = 'Basic';
+				break;
+			case 'detai':
+				action = 'Detail';
+				break;
+			case 'histo':
+			case './his':
+				action = 'History';
 				break;
 			case 'resul':
-				strActionLabel = 'Result ';
-				break;
-			case 'advan':
-				strActionLabel = 'Advanced ';
+			case './res':
+				action = 'Result';
 				break;
 			default:
-				strActionLabel = 'Unknown_'+Action+' ';
+				action = 'Unknown: ' + jQuery("form#aspnetForm").attr("action").substr(0,5);
 		}
-		// Grab the possible search strings - use these to identify what style form was submitted
-		strSimpleString = jQuery("input#SearchTerm1").val();
-		strString1 = jQuery("input#Searchbox1").val();
-		if(strSimpleString) {
-			var strSearchType = jQuery('input[name="SearchTag"]:checked').val();
-			switch(strSearchType) {
-				case 'RadioButtonSearchTag_':
-					strSearchTypeLabel = 'Keyword ';
-					break;
-				case 'RadioButtonSearchTag_TI':
-					strSearchTypeLabel = 'Title ';
-					break;
-				case 'RadioButtonSearchTag_AU':
-					strSearchTypeLabel = 'Author ';
-					break;
-				default:
-					strSearchTypeLabel = 'Unknown ';
-					break;
-			}
-			TrackEvent('Search',strActionLabel+strSearchTypeLabel+'Search',strSimpleString,1);
-		} else if(strString1) {
-			var strField1 = jQuery("input#DbTag_1").val();
-			var strOp2 = jQuery("input#Op_2").val();
-			var strString2 = jQuery("input#Searchbox2").val();
-			var strField2 = jQuery("input#DbTag_2").val();
-			var strOp3 = jQuery("input#Op_3").val();
-			var strString3 = jQuery("input#Searchbox3").val();
-			var strField3 = jQuery("input#DbTag_3").val();
-			var strComplexString = strString1+' in '+strField1+', '+strOp2+' '+strString2+' in '+strField2+', '+strOp3+' '+strString3+' in '+strField3;
-			TrackEvent('Search',strActionLabel+'Long Search',strComplexString,1);
+		return action;
+	}
+
+	function GetSearchType() {
+		switch( jQuery('input[name="SearchTag"]:checked').val() ) {
+			case 'RadioButtonSearchTag_':
+				type = 'Keyword';
+				break;
+			case 'RadioButtonSearchTag_TI':
+				type = 'Title';
+				break;
+			case 'RadioButtonSearchTag_AU':
+				type = 'Author ';
+				break;
+			default:
+				type = 'Unknown: ' + jQuery('input[name="SearchTag"]:checked').val();
+				break;
+		}
+		return type;
+	}
+
+	function GetSearchString(Mode){
+		// Initialize object containing search parameters
+		var search = new Object();
+
+		// Store search type/mode ("Basic", "Long", etc - based on what button
+		// was clicked)
+		search.mode = Mode;
+
+		// Look up search form action
+		search.action = GetFormAction();
+
+		// Parse the search type and other fields based on what search string
+		// was found
+		if( jQuery("input#SearchTerm1").val() ) {
+			// We're recording the simple search form at the top of the page.
+
+			// Store the search type
+			search.type = GetSearchType();
+
+			// Store the search string for a simple form
+			search.string = jQuery("input#SearchTerm1").val();
+
+		} else if( jQuery("input#Searchbox1").val() ) {
+			// This is the long search form, which is hard to track. This is
+			// our best guess yet.
+			search.type = 'Long';
+
+			// Simple string (just the first text box)
+			search.string = jQuery("input#Searchbox1").val();
+
+			// Complex search string (multiple lines of booleans and custom fields)
+			search.complexstring = GetComplexSearch();
+
 		} else {
-			TrackEvent('Search','Unrecognized Search','...',1);
+			// This is an unrecognized type of search, so we're not sure
+			// where to find the search string.
+			search.type = 'Unrecognized';
+
 		}
+
+		// Record the search event
+		TrackEvent(
+			'', // Category isn't needed, but not entirely gone
+			'Search',
+			JSON.stringify(search),
+			1
+		);
 
 	}
 
@@ -647,3 +678,4 @@ div#bartonplus_placard iframe {
 	}
 
 </script>
+<script type="text/javascript" src="//widgets.ebscohost.com/prod/search/byFacet.js"></script>
